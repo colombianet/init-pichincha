@@ -1,0 +1,97 @@
+.register-book {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__title {
+    margin-top: 6%;
+    font-weight: 200;
+  }
+
+  &__field {
+    margin: 8px 0;
+  }
+
+
+  &__label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+  }
+
+  &__grid-nogap {
+    gap: unset;
+    max-height: 100px;
+    overflow-y: scroll;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 3px;
+  }
+
+  &__area {
+    width: 100%;
+    padding: 3px;
+  }
+
+  &__error {
+    margin: 0;
+    color: red;
+    font-size: 12px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1%;
+    margin: 1% 0;
+  }
+
+  &__btn-cancel {
+    background-color: #d1d1d2;
+    padding: 5px 23px;
+    border-radius: 2px;
+    color: #180080;
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  &__btn-submit {
+    background-color: #ffd100;
+    color: #000;
+    padding: 4px 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+  }
+
+
+  &__btn-submit:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+}
+/* Estilos para el scroll vertical */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho del scroll */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color del fondo del scroll */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del scroll */
+  border-radius: 4px; /* Borde redondeado del scroll */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color del scroll al pasar el mouse sobre él */
+}
+

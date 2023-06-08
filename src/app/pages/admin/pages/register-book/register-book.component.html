@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+
+<div class="register-book">
+  <h2 class="register-book__title">Registro Libro</h2>
+
+  <form [formGroup]="registerBookForm" (ngSubmit)="addBook()" novalidate>
+    <div class="register-book__grid">
+      <div class="register-book__field">
+        <label for="bookname" class="register-book__label">Nombre de libro</label>
+        <input class="register-book__input" formControlName="bookname" id="bookname" type="text"
+          placeholder="Ej. Angular + NGRX">
+        <div class="register-book__error" *ngIf="isValidField('bookname')">El campo es
+          obligatorio.</div>
+      </div>
+
+      <div class="register-book__field">
+        <label for="urlbook" class="register-book__label">URL del libro</label>
+        <input class="register-book__input" formControlName="urlbook" id="urlbook" type="text"
+          placeholder="Ej. https://books-all.com/sabakkasd/img">
+        <div class="register-book__error" *ngIf="isValidField('urlbook')">El campo es
+          obligatorio.</div>
+      </div>
+
+      <div class="register-book__field">
+        <label for="authorname" class="register-book__label">Nombre del autor</label>
+        <input class="register-book__input" formControlName="authorname" id="authorname" type="text"
+          placeholder="Ej. Kevin Suarez">
+        <div class="register-book__error" *ngIf="isValidField('authorname')">El campo es
+          obligatorio.</div>
+      </div>
+
+      <div class="register-book__field">
+        <label for="image" class="register-book__label">Imagen de portada</label>
+        <input class="register-book__input" formControlName="image" id="image" type="text"
+          placeholder="Ej. https://books-all.com/sabakkasd/img">
+        <div class="register-book__error" *ngIf="isValidField('image')">El campo es
+          obligatorio.</div>
+      </div>
+
+      <div class="register-book__field">
+        <label for="summary" class="register-book__label">Resumen del libro</label>
+        <textarea class="register-book__area" formControlName="summary" id="summary" name="" id="" cols="30" rows="4"
+          placeholder="Ej. ..."></textarea>
+        <div class="register-book__error" *ngIf="isValidField('summary')">El campo es
+          obligatorio.</div>
+      </div>
+
+      <div class="register-book__field">
+        <input class="register-book__check" formControlName="post" id="post" type="checkbox">
+        <label for="post" class="register-book__label-check"> Publicar</label>
+      </div>
+    </div>
+
+    <h2 class="register__subtitle">Categorias</h2>
+
+    <div class="register-book__grid register-book__grid-nogap">
+      <div *ngFor="let category of listCategories?.controls; let i = index">
+        <label>
+          <input type="checkbox" [formControl]="category.controls['valueCheck']">
+          {{ category.controls.data.value?.description }}
+        </label>
+      </div>
+    </div>
+    <div
+    *ngIf="isValidFieldCustom('categories', 'insufficientSelections')"
+      class="register-book__error">
+      Debes seleccionar al menos 1 categoría.
+    </div>
+
+    <div class="register-book__buttons">
+      <button class="register-book__btn-cancel" (click)="back()">Cancelar</button>
+      <button class="register-book__btn-submit" type="submit" [disabled]="registerBookForm.invalid">Registrar</button>
+    </div>
+  </form>
+</div>
+
+<app-popup [(isVisible)]="isPopupVisible" [btnClose]="'Ver listado de libros'" (isVisibleChange)="goToListBooks()">
+  <h2>¡Operación exitosa!</h2>
+  <p>El libro se ha registrado de manera exitosa</p>
+</app-popup>

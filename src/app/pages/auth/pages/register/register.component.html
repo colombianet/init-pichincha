@@ -1,0 +1,81 @@
+<div class="register">
+  <h2 class="register__title">Registrarse</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+
+    <div class="register__field">
+      <label for="user" class="register__label">Nombre de usuario</label>
+      <input [class]="{'input': !fieldIsValid('user'), 'error': fieldIsValid('user')}" formControlName="user" id="user"
+        type="text" placeholder="Ej. makoto">
+      <div *ngIf="registerForm.get('user')?.errors">
+        <div class="register__error"
+          *ngIf="fieldIsValidRequired('user')">El campo es
+          obligatorio.</div>
+        <div class="register__error" *ngIf="fieldIsValidCustom('user', 'unavailable')">El nombre de usuario no
+          está disponible.</div>
+      </div>
+    </div>
+
+    <div class="register__field">
+      <label for="email" class="register__label">Correo electrónico</label>
+      <input [ngClass]="{'input': !fieldIsValid('email'), 'error': fieldIsValid('email')}" formControlName="email"
+        id="email" type="text" placeholder="Ej. name@example.com">
+      <p *ngIf="fieldIsValid('email')" class="register__error">Campo requerido y debe tener un formato válido:
+        test@test.com</p>
+    </div>
+
+    <div class="register__field">
+      <label for="pass" class="register__label">Contraseña</label>
+      <input [ngClass]="{'input': !fieldIsValid('pass'), 'error': fieldIsValid('pass')}" formControlName="pass"
+        id="pass" type="password" placeholder="******">
+      <div *ngIf="registerForm.get('pass')?.errors">
+        <div class="register__error"
+          *ngIf="fieldIsValidRequired('pass')">- El campo es obligatorio.</div>
+        <div class="register__error"
+          *ngIf="fieldIsValidCustom('pass', 'minlength')">- El campo debe tener al menos 8 caracteres.</div>
+        <div class="register__error"
+          *ngIf="fieldIsValidCustom('pass', 'pattern')">
+          - La contraseña debe tener una mayúscula, un número y un carácter especial.</div>
+      </div>
+    </div>
+
+    <div class="register__field">
+      <label for="confirm" class="register__label">Confirmar contraseña</label>
+      <input [ngClass]="{'input': !fieldIsValid('confirmPass'), 'error': fieldIsValid('confirmPass')}"
+        formControlName="confirmPass" id="confirm" type="password" placeholder="******">
+      <div *ngIf="registerForm.get('confirmPass')?.errors">
+        <div class="register__error" *ngIf="registerForm.get('confirmPass')?.errors?.['required']">El campo es
+          obligatorio.</div>
+        <div class="register__error" *ngIf="registerForm.get('confirmPass')?.errors?.['mismatch']">Las contraseñas no
+          coinciden.</div>
+      </div>
+    </div>
+
+    <h2 class="register__title register__title--noborder">Categorias</h2>
+
+    <div class="categories">
+      <div *ngFor="let category of listCategories.controls; let i = index">
+        <label>
+          <input type="checkbox" [formControl]="category.controls['valueCheck']">
+          {{ category.controls.data.value?.description }}
+        </label>
+      </div>
+
+      <div
+        *ngIf="fieldIsValidCustom('categories', 'insufficientSelections')"
+        class="categories__error">
+        Debes seleccionar al menos 3 categorías.
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="buttons__login" routerLink="/auth/login" type="button">Iniciar sesión</button>
+      <button class="buttons__register" type="submit" [disabled]="registerForm.invalid">Registrar</button>
+    </div>
+  </form>
+</div>
+
+<app-popup [(isVisible)]="isPopupVisible" [btnClose]="'Ir al login'" (isVisibleChange)="goToLogin()">
+  <h2>¡Operación exitosa!</h2>
+  <p>El usuario se ha registrado de manera exitosa</p>
+</app-popup>

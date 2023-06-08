@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+
+<div class="books">
+  <div class="books__container-subtitles">
+    <h3 class="books__subtitle">Tus libros</h3>
+    <button class="books__btn" routerLink="/admin/register-book/new">Agregar Libro</button>
+  </div>
+
+  <div class="books__container-filters">
+    <input [formControl]="search" type="text" class="books__input" placeholder="Ej. Angular, React">
+
+    <select #categories (change)="filterArrayBySelect(categories.value)" name="" id="" class="books__select">
+      <option value="0" selected>Todos</option>
+      <option [value]="category.id" *ngFor="let category of listCategories">{{category.description}}</option>
+    </select>
+  </div>
+
+  <div class="books__grid">
+    <app-book-card *ngFor="let book of listBooksFiltered" [book]="book" (click)="seeBook(book)"></app-book-card>
+  </div>
+</div>

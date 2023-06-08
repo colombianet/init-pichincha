@@ -1,0 +1,45 @@
+.books {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__container-subtitles {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7%;
+  }
+
+  &__container-filters {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+  }
+
+  &__btn {
+    background-color: #d1d1d2;
+    padding: 5px 23px;
+    border-radius: 2px;
+    color: #180080;
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  &__input {
+    padding: 3px;
+  }
+
+  &__select {
+    padding: 5px;
+    width: 185px;
+    border-color: darkgray;
+    border-radius: 2px;
+    color: dimgray;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2%;
+    margin-top: 3%;
+  }
+}

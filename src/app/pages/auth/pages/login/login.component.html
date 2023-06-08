@@ -1,0 +1,34 @@
+<div class="register">
+  <h2 class="register__title">Iniciar sesión</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+
+    <div class="register__field">
+      <label for="username" class="register__label">Nombre de usuario</label>
+      <input [class]="{'input': !fieldIsValidRequired('username'), 'error': fieldIsValidRequired('username')}"
+        formControlName="username" id="username" type="text" placeholder="Ej. makoto">
+      <div *ngIf="loginForm.get('username')?.errors">
+        <div class="register__error" *ngIf="fieldIsValidRequired('username')">El campo es obligatorio.</div>
+        <div class="register__error" *ngIf="fieldIsValidCustom('username', 'unavailable')">El nombre de usuario no
+          está disponible.</div>
+      </div>
+    </div>
+
+    <div class="register__field mb-75">
+      <label for="password" class="register__label">Contraseña</label>
+      <input [ngClass]="{'input': !fieldIsValidRequired('password'), 'error': fieldIsValidRequired('password')}"
+        formControlName="password" id="password" type="password" placeholder="*******">
+      <p *ngIf="fieldIsValidRequired('password')" class="register__error">El campo es obligatorio</p>
+    </div>
+
+    <div class="buttons">
+      <button class="buttons__login" routerLink="/auth/register" type="button">Registrate aquí</button>
+      <button class="buttons__register" type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+    </div>
+  </form>
+</div>
+
+<app-popup [(isVisible)]="isPopupVisible" [btnClose]="'Volver a intentar'">
+  <h2>¡Operación fallida!</h2>
+  <p>Usuario o contraseña incorrecta</p>
+</app-popup>

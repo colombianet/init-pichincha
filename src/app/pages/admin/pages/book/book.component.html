@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="book">
+
+  <div class="book__buttons">
+    <button class="book__btn-cancel" (click)="back()">Volver</button>
+    <button class="book__btn-submit" routerLink="/admin/register-book/edit">Editar</button>
+  </div>
+
+  <div class="book__grid">
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+    <img [src]="book.image" [alt]="book.title" class="book__img" *ngIf="!showSpinner">
+    <div class="book__table" *ngIf="!showSpinner">
+      <div class="book__row">
+        <label for="" class="book__cell">Título</label>
+        <p class="book__cell">{{book.title}}</p>
+      </div>
+      <div class="book__row">
+        <label for="" class="book__cell">Autor</label>
+        <p class="book__cell">{{book.author}}</p>
+      </div>
+      <div class="book__row">
+        <label for="" class="book__cell">URL del libro</label>
+        <p class="book__cell book__cell--url">{{book.url | small: 0:40}}</p>
+      </div>
+      <div class="book__row">
+        <label for="" class="book__cell">Resumen</label>
+        <p class="book__cell">{{book.resume | small: 0:140}}</p>
+      </div>
+      <div class="book__row">
+        <label for="" class="book__cell">Categorías</label>
+        <p class="book__cell">{{listCategoriesBookByName}}</p>
+      </div>
+    </div>
+  </div>
+</div>

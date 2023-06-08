@@ -1,0 +1,16 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 2%;
+  align-items: center;
+  background-color: #e8e4e4;
+
+  &__title {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  &__user {
+    font-weight: bold;
+  }
+}

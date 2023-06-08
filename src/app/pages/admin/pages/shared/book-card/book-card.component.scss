@@ -1,0 +1,22 @@
+.book-card {
+  padding: 4.5%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 230px;
+
+  &__img {
+    width: 77%;
+    height: 77%;
+    object-fit: cover;
+    margin: 10px;
+    transition: opacity .3s;
+  }
+
+  &__img:hover {
+    opacity: .7;
+    cursor: pointer;
+  }
+}
