@@ -15,4 +15,7 @@ export class NavbarComponent implements OnInit {
     this.nameUser = sessionStorage.getItem('user') || '';
   }
 
+  logout() {
+    sessionStorage.clear();
+  }
 }

@@ -1,9 +1,7 @@
-<app-navbar></app-navbar>
-
 <div class="register-book">
   <h2 class="register-book__title">Registro Libro</h2>
 
-  <form [formGroup]="registerBookForm" (ngSubmit)="addBook()" novalidate>
+  <form [formGroup]="registerBookForm" (ngSubmit)="addBook()" novalidate autocomplete="off">
     <div class="register-book__grid">
       <div class="register-book__field">
         <label for="bookname" class="register-book__label">Nombre de libro</label>
@@ -17,8 +15,10 @@
         <label for="urlbook" class="register-book__label">URL del libro</label>
         <input class="register-book__input" formControlName="urlbook" id="urlbook" type="text"
           placeholder="Ej. https://books-all.com/sabakkasd/img">
-        <div class="register-book__error" *ngIf="isValidField('urlbook')">El campo es
+        <div class="register-book__error" *ngIf="registerBookForm.get('urlbook')?.errors?.['required'] && registerBookForm.get('urlbook')?.touched">El campo es
           obligatorio.</div>
+        <div class="register-book__error" *ngIf="registerBookForm.get('urlbook')?.errors?.['pattern']">Debe ser una URL válida
+           eje. https:// o http://.</div>
       </div>
 
       <div class="register-book__field">
@@ -33,8 +33,10 @@
         <label for="image" class="register-book__label">Imagen de portada</label>
         <input class="register-book__input" formControlName="image" id="image" type="text"
           placeholder="Ej. https://books-all.com/sabakkasd/img">
-        <div class="register-book__error" *ngIf="isValidField('image')">El campo es
+        <div class="register-book__error" *ngIf="registerBookForm.get('image')?.touched && registerBookForm.get('image')?.errors?.['required']">El campo es
           obligatorio.</div>
+        <div class="register-book__error" *ngIf="registerBookForm.get('image')?.errors?.['pattern']">Debe ser una URL válida
+            eje. https:// o http://.</div>
       </div>
 
       <div class="register-book__field">

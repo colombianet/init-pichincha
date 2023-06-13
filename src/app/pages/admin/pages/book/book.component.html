@@ -1,5 +1,3 @@
-<app-navbar></app-navbar>
-
 <div class="book">
 
   <div class="book__buttons">
@@ -9,7 +7,7 @@
 
   <div class="book__grid">
     <app-spinner *ngIf="showSpinner"></app-spinner>
-    <img [src]="book.image" [alt]="book.title" class="book__img" *ngIf="!showSpinner">
+    <img [src]="book.image" (error)="handleImageError()" (load)="handleImageLoad()" [alt]="book.title" class="book__img" *ngIf="!showSpinner">
     <div class="book__table" *ngIf="!showSpinner">
       <div class="book__row">
         <label for="" class="book__cell">Título</label>

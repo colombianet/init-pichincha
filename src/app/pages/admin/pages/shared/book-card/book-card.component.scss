@@ -4,13 +4,54 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 230px;
-  height: 230px;
+  width: 249px;
+  height: 260px;
 
   &__img {
     width: 77%;
     height: 77%;
-    object-fit: cover;
+    margin: 10px;
+    transition: opacity .3s;
+  }
+
+  &__img:hover {
+    opacity: .7;
+    cursor: pointer;
+  }
+}
+.book-card-medium {
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 290px;
+  height: 330px;
+
+  &__img {
+    width: 83%;
+    height: 90%;
+    margin: 10px;
+    transition: opacity .3s;
+  }
+
+  &__img:hover {
+    opacity: .7;
+    cursor: pointer;
+  }
+}
+.book-card-small {
+  padding: 4.5%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+
+  &__img {
+    width: 77%;
+    height: 77%;
     margin: 10px;
     transition: opacity .3s;
   }

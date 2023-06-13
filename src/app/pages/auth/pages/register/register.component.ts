@@ -8,9 +8,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { CategoryService } from 'src/app/application/use-case/category/category.service';
-import { UserService } from 'src/app/application/use-case/user/user.service';
 import { isValidField, isValidFieldRequired, isValidFieldCustom } from '../../../../shared/utils/form-validations';
+import { UserService } from '../../../../application/use-case/user/user.service';
+import { CategoryService } from '../../../../application/use-case/category/category.service';
 
 @Component({
   selector: 'app-register',

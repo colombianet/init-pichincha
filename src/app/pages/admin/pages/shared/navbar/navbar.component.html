@@ -1,4 +1,10 @@
 <div class="navbar">
-  <h2 class="navbar__title">Biblioteca</h2>
-  <p class="navbar__user">{{(nameUser | titlecase) || ''}}</p>
+  <div class="navbar__navigation">
+    <h2 class="navbar__title" routerLink="/admin/public-library" routerLinkActive="active">Biblioteca</h2>
+    <a class="navbar__link" routerLink="/admin/books" routerLinkActive="active">Mis libros</a>
+  </div>
+  <div class="navbar__container">
+    <p class="navbar__user">{{(nameUser | titlecase) || ''}}</p>
+    <button class="navbar__btn" routerLink="/auth/login" (click)="logout()">Salir</button>
+  </div>
 </div>

@@ -1,0 +1,38 @@
+<div class="public">
+  <h2 class="public__title">Tus libros</h2>
+
+  <div class="card-container">
+    <app-noimage *ngIf="listBooksPublics.length == 0"></app-noimage>
+    <app-book-card routerLink="/admin/books/view/{{item.id}}" (click)="seeBook(item)" class="card" [size]="'medium'" [book]="item" *ngFor="let item of listBooksAll | slice:0:4"></app-book-card>
+  </div>
+
+  <button class="public__btn" routerLink="/admin/books">Ver más</button>
+  <h2 class="public__subtitle">Publicaciones</h2>
+</div>
+<div class="container">
+
+
+  <div class="image-container">
+
+    <div class="image-list">
+      <app-noimage *ngIf="listBooksPublics.length == 0"></app-noimage>
+      <app-book-card (click)="seeBook(item)" [size]="'small'" *ngFor="let item of listBooksPublics" [book]="item"></app-book-card>
+    </div>
+
+  </div>
+  <div class="filter-container">
+    <h3 class="subtitle-filters">Buscar</h3>
+    <input [formControl]="search" type="text" class="input" placeholder="Ej. Angular, React">
+
+    <h2 class="title-filters">Categorias</h2>
+    <div class="filters">
+      <div *ngFor="let category of listCategories?.controls; let i = index">
+        <label>
+          <input type="checkbox" [formControl]="category.controls['valueCheck']">
+          {{ category.controls.data.value?.description }}
+        </label>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/application/models/book.model';
 import { Category } from 'src/app/application/models/category.model';
-import { BookService } from 'src/app/application/use-case/book/book.service';
-import { CategoryService } from 'src/app/application/use-case/category/category.service';
+import { BookService } from '../../../../application/use-case/book/book.service';
+import { CategoryService } from '../../../../application/use-case/category/category.service';
 
 @Component({
   selector: 'app-books',
@@ -74,32 +74,11 @@ export class BooksComponent implements OnInit {
 
   filterArrayBySelect(idCategory: string) {
     this.valueSelect = idCategory;
-    if (idCategory != '0') {
-      this.valueSelect = idCategory;
-    }
-    this.listBooksFiltered = [...this.listBooks];
-    let newCategories: Book[] = [];
-    this.listBooksFiltered.forEach(l => {
-      l.category.forEach(c => {
-        if (c == Number(this.valueSelect)) {
-          newCategories.push(l);
-        };
-      });
-    });
-    this.listBooksFiltered = newCategories;
+    this.filterBooksByCategory();
 
     // Hay algo en input y select tiene una opción
     if (this.valueInputSearch.length > 0 && this.valueSelect != '0') {
-      this.listBooksFiltered = [...this.listBooks];
-      let newCategories: Book[] = [];
-      this.listBooksFiltered.forEach(l => {
-        l.category.forEach(c => {
-          if (c == Number(this.valueSelect)) {
-            newCategories.push(l);
-          };
-        });
-      });
-      this.listBooksFiltered = newCategories;
+      this.filterBooksByCategory();
       this.listBooksFiltered = this.listBooksFiltered.filter(book =>
         book.title.toLowerCase().includes(this.valueInputSearch)
       );
@@ -118,6 +97,19 @@ export class BooksComponent implements OnInit {
     }
   }
 
+  private filterBooksByCategory() {
+    this.listBooksFiltered = [...this.listBooks];
+    let newCategories: Book[] = [];
+    this.listBooksFiltered.forEach(l => {
+      l.category.forEach(c => {
+        if (c == Number(this.valueSelect)) {
+          newCategories.push(l);
+        };
+      });
+    });
+    this.listBooksFiltered = newCategories;
+  }
+
   private getBooks() {
     this.booksSvc.getListBooks().subscribe(r => {
       this.listBooks = r;
@@ -125,9 +117,9 @@ export class BooksComponent implements OnInit {
     });
   }
 
-  seeBook(book: Book) {
+  async seeBook(book: Book) {
     sessionStorage.setItem('book', JSON.stringify(book));
-    this.router.navigate(['/admin', 'books', 'view', book.id]);
+    await this.router.navigate(['/admin', 'books', 'view', book.id]);
   }
 
 }

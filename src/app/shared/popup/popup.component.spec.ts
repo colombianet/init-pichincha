@@ -22,4 +22,13 @@ describe('PopupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('closePopup', () => {
+    const spy = jest.spyOn(component, 'closePopup');
+    const emitSpy = jest.spyOn(component.isVisibleChange, 'emit');
+    component.closePopup();
+    expect(spy).toHaveBeenCalled();
+    expect(component.isVisible).toBeFalsy();
+    expect(emitSpy).toHaveBeenCalledWith(false);
+  });
 });

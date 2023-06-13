@@ -9,6 +9,7 @@ import { Book } from '../../../../../application/models/book.model';
 export class BookCardComponent implements OnInit {
 
   @Input() book!: Book;
+  @Input() size: 'small' | 'medium' | 'large' = 'large';
   defaultImageUrl = '/assets/image/noimage.jpg';
 
   constructor() { }

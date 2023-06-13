@@ -1,3 +1,11 @@
-<div class="book-card">
+<div class="book-card" *ngIf="size == 'large'">
   <img [src]="book.url" (error)="book.url = defaultImageUrl" [alt]="book.title" class="book-card__img">
+</div>
+
+<div class="book-card-medium" *ngIf="size == 'medium'">
+  <img [src]="book.url" (error)="book.url = defaultImageUrl" [alt]="book.title" class="book-card-medium__img">
+</div>
+
+<div class="book-card-small" *ngIf="size == 'small'">
+  <img [src]="book.url" (error)="book.url = defaultImageUrl" [alt]="book.title" class="book-card-small__img">
 </div>

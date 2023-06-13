@@ -1,7 +1,7 @@
 <div class="register">
   <h2 class="register__title">Registrarse</h2>
 
-  <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser()" novalidate autocomplete="off">
 
     <div class="register__field">
       <label for="user" class="register__label">Nombre de usuario</label>

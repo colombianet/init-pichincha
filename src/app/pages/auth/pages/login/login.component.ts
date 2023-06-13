@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/application/use-case/user/user.service';
-import { isValidFieldCustom, isValidFieldRequired } from 'src/app/shared/utils/form-validations';
+import { UserService } from '../../../../application/use-case/user/user.service';
+import { isValidFieldRequired, isValidFieldCustom } from '../../../../shared/utils/form-validations';
 
 @Component({
   selector: 'app-login',
@@ -45,6 +45,6 @@ export class LoginComponent implements OnInit {
   }
 
   goToAdmin() {
-    this.router.navigate(['/admin', 'books']);
+    this.router.navigate(['/admin']);
   }
 }

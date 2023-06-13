@@ -7,12 +7,15 @@ import { SharedModule } from "./pages/shared/shared.module";
 import { ReactiveFormsModule } from '@angular/forms';
 import { SlicePipe } from './pipes/slice.pipe';
 import { SharedGeneralModule } from 'src/app/shared/shared-general.module';
+import { AdminComponent } from './admin.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
     declarations: [
         RegisterBookComponent,
-        SlicePipe
+        SlicePipe,
+        AdminComponent
     ],
     exports: [
         SlicePipe
@@ -22,7 +25,8 @@ import { SharedGeneralModule } from 'src/app/shared/shared-general.module';
         AdminRoutingModule,
         SharedModule,
         ReactiveFormsModule,
-        SharedGeneralModule
+        SharedGeneralModule,
+        RouterModule
     ]
 })
 export class AdminModule { }

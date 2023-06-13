@@ -13,6 +13,7 @@ export class BookComponent implements OnInit {
   categories: string[] = [];
   showSpinner = true;
   listCategoriesBookByName = '';
+  defaultImageUrl = '/assets/image/noimage.jpg';
 
   constructor(private location: Location) { }
 
@@ -34,5 +35,14 @@ export class BookComponent implements OnInit {
       arrayTemp.push(b.description);
     });
     return arrayTemp.join(", ");
+  }
+
+  handleImageError(): void {
+    this.book.image = this.defaultImageUrl;
+    this.showSpinner = false;
+  }
+
+  handleImageLoad(): void {
+    this.showSpinner = false;
   }
 }

@@ -1,5 +1,3 @@
-<app-navbar></app-navbar>
-
 <div class="books">
   <div class="books__container-subtitles">
     <h3 class="books__subtitle">Tus libros</h3>
@@ -16,6 +14,7 @@
   </div>
 
   <div class="books__grid">
+    <app-noimage *ngIf="listBooksFiltered.length == 0"></app-noimage>
     <app-book-card *ngFor="let book of listBooksFiltered" [book]="book" (click)="seeBook(book)"></app-book-card>
   </div>
 </div>

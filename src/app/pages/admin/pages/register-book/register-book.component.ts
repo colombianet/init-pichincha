@@ -4,9 +4,9 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { Book } from 'src/app/application/models/book.model';
-import { BookService } from 'src/app/application/use-case/book/book.service';
-import { CategoryService } from 'src/app/application/use-case/category/category.service';
-import { isValidField, isValidFieldCustom } from 'src/app/shared/utils/form-validations';
+import { BookService } from '../../../../application/use-case/book/book.service';
+import { CategoryService } from '../../../../application/use-case/category/category.service';
+import { isValidField, isValidFieldCustom } from '../../../../shared/utils/form-validations';
 
 @Component({
   selector: 'app-register-book',
@@ -27,12 +27,24 @@ export class RegisterBookComponent implements OnInit {
     this.registerBookForm = this.fb.group({
       bookname: [!this.isNewBook && this.book?.title || '', [Validators.required]],
       authorname: [!this.isNewBook && this.book?.author || '', [Validators.required]],
-      urlbook: [!this.isNewBook && this.book?.url || '', [Validators.required]],
-      image: [!this.isNewBook && this.book?.image || '', [Validators.required]],
+      urlbook: [this.setUrl(), [Validators.required,
+      Validators.pattern(/^(http:\/\/|https:\/\/).+/)]],
+      image: [!this.isNewBook && this.book?.image || '', [Validators.required,
+      Validators.pattern(/^(http:\/\/|https:\/\/).+/)]],
       summary: [!this.isNewBook && this.book?.resume || '', [Validators.required]],
       post: [!this.isNewBook && this.book?.public || false],
       categories: this.fb.array([], this.validateArraySelections(1))
     });
+  }
+
+  private setUrl() {
+    if(!this.isNewBook) {
+      return this.book.url == '/assets/image/noimage.jpg'
+        ? 'Selecciona una nueva imagen'
+        : this.book.url;
+    } else {
+      return '';
+    }
   }
 
   constructor(private categorySvc: CategoryService, private fb: FormBuilder,
@@ -42,14 +54,16 @@ export class RegisterBookComponent implements OnInit {
   ngOnInit(): void {
     this.initArrayCategories();
     this.userRegister = sessionStorage.getItem('user') || '';
-    this.book = JSON.parse(sessionStorage.getItem('book') || '');
+    this.book = sessionStorage.getItem('book') || '' as any;
     this.isNewRegisterBook();
   }
 
   private isNewRegisterBook() {
     this.aRouter.paramMap
       .pipe(
-        map(params => params.get('mode'))
+        map(params => {
+          return params.get('mode');
+        })
       )
       .subscribe(mode => {
         this.isNewBook = mode === 'new';

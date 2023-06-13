@@ -5,12 +5,59 @@
   align-items: center;
   background-color: #e8e4e4;
 
+  &__navigation {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
   &__title {
     font-size: 15px;
     font-weight: 500;
+    cursor: pointer;
+  }
+
+  &__title:hover {
+    opacity: .7;
+  }
+
+  &__title.active {
+    font-weight: bold;
+  }
+
+  &__link {
+    font-size: 14px;
+    color: #1c1a1a;
+  }
+
+  &__link.active {
+    font-weight: bold;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
   }
 
   &__user {
     font-weight: bold;
+  }
+
+  &__btn {
+    padding: 2px 15px;
+    color: #c0392b;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: 2px solid #c0392b;
+    transition: .3s;
+  }
+
+  &__btn:hover {
+    background-color: #c0392b;
+    color: #fff;
+    opacity: 1;
   }
 }
