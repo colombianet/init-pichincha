@@ -29,6 +29,9 @@
 </div>
 
 <app-popup [(isVisible)]="isPopupVisible" [btnClose]="'Volver a intentar'">
+  <div class="icon-red">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
   <h2>¡Operación fallida!</h2>
   <p>Usuario o contraseña incorrecta</p>
 </app-popup>

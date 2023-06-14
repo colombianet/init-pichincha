@@ -2,8 +2,9 @@
   <h2 class="public__title">Tus libros</h2>
 
   <div class="card-container">
-    <app-noimage *ngIf="listBooksPublics.length == 0"></app-noimage>
-    <app-book-card routerLink="/admin/books/view/{{item.id}}" (click)="seeBook(item)" class="card" [size]="'medium'" [book]="item" *ngFor="let item of listBooksAll | slice:0:4"></app-book-card>
+    <app-noimage *ngIf="listBooksAll.length == 0"></app-noimage>
+    <app-book-card routerLink="/admin/books/view/{{item.id}}" (click)="seeBook(item)" class="card" [size]="'medium'"
+      [book]="item" *ngFor="let item of listBooksAll | slice:0:4"></app-book-card>
   </div>
 
   <button class="public__btn" routerLink="/admin/books">Ver más</button>
@@ -16,7 +17,8 @@
 
     <div class="image-list">
       <app-noimage *ngIf="listBooksPublics.length == 0"></app-noimage>
-      <app-book-card (click)="seeBook(item)" [size]="'small'" *ngFor="let item of listBooksPublics" [book]="item"></app-book-card>
+      <app-book-card routerLink="/admin/books/view/{{item.id}}" (click)="seeBook(item)" [size]="'small'" *ngFor="let item of listBooksPublics"
+        [book]="item"></app-book-card>
     </div>
 
   </div>

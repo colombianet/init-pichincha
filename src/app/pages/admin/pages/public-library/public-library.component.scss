@@ -102,9 +102,22 @@ label {
   max-width: 1200px;
   margin: 0 auto;
   width: 95%;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
+
+    .filter-container {
+      // order: 1;
+    }
+
+    .image-container {
+      // order: 1;
+    }
+  }
 
   .image-container {
     flex: 3;
+    // order: 1;
 
     .image-list {
       display: grid;
@@ -145,6 +158,11 @@ label {
     margin-bottom: 35px;
     max-width: 321px;
     gap: 20px;
+    order: -1;
+
+    @media (min-width: 768px) {
+      order: 1;
+    }
 
     .subtitle-filters {
       margin: 5px 0;

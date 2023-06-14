@@ -92,6 +92,13 @@ describe('RegisterBookComponent', () => {
     expect(component.registerBookForm.value.post).toBe(false);
   });
 
+  it('setUrl', () => {
+    component.isNewBook = false;
+    component.book = {book: {url: 'hola'}} as any;
+    const resp = component['setUrl']();
+    expect(typeof resp == 'string').toBe(false);
+  });
+
   it('should navigate back when the back button is clicked', () => {
     const locationBackSpy = jest.spyOn(location, 'back');
 

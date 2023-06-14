@@ -54,7 +54,8 @@ export class RegisterBookComponent implements OnInit {
   ngOnInit(): void {
     this.initArrayCategories();
     this.userRegister = sessionStorage.getItem('user') || '';
-    this.book = sessionStorage.getItem('book') || '' as any;
+    const bookObject: Book = eval(`(${sessionStorage.getItem('book')})`);
+    this.book = bookObject;
     this.isNewRegisterBook();
   }
 

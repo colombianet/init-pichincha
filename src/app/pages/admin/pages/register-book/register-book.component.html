@@ -77,6 +77,9 @@
 </div>
 
 <app-popup [(isVisible)]="isPopupVisible" [btnClose]="'Ver listado de libros'" (isVisibleChange)="goToListBooks()">
+  <div class="icon">
+    <i class="fa-solid fa-circle-check"></i>
+  </div>
   <h2>¡Operación exitosa!</h2>
   <p>El libro se ha registrado de manera exitosa</p>
 </app-popup>

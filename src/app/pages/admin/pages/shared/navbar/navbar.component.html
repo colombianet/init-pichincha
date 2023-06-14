@@ -4,7 +4,9 @@
     <a class="navbar__link" routerLink="/admin/books" routerLinkActive="active">Mis libros</a>
   </div>
   <div class="navbar__container">
-    <p class="navbar__user">{{(nameUser | titlecase) || ''}}</p>
+    <div class="navbar__logo">
+      <i class="fa-solid fa-user"></i><p class="navbar__user"> {{(nameUser | titlecase) || ''}}</p>
+    </div>
     <button class="navbar__btn" routerLink="/auth/login" (click)="logout()">Salir</button>
   </div>
 </div>

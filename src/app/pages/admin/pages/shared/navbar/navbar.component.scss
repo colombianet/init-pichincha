@@ -23,11 +23,12 @@
 
   &__title.active {
     font-weight: bold;
+    color: #181819;
   }
 
   &__link {
     font-size: 14px;
-    color: #1c1a1a;
+    color: #4A4A4B;
   }
 
   &__link.active {
@@ -59,5 +60,16 @@
     background-color: #c0392b;
     color: #fff;
     opacity: 1;
+  }
+
+  &__logo {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+
+    i {
+      color: #726d50;
+      font-size: 11px;
+    }
   }
 }

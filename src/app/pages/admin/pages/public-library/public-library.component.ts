@@ -14,6 +14,7 @@ export class PublicLibraryComponent implements OnInit {
 
   listBooksAll: Book[] = [];
   listBooksPublics: Book[] = [];
+  listBooksPublicsTop: Book[] = [];
   categories: Category[] = [];
 
   search = new FormControl();
@@ -109,6 +110,7 @@ export class PublicLibraryComponent implements OnInit {
   private getBooks() {
     this.booksSvc.getListBooks().subscribe(r => {
       this.listBooksAll = [...r];
+      this.listBooksPublicsTop = r;
       this.filterBooksPublic(this.listBooksAll);
     });
   }

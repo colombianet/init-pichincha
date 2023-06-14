@@ -13,7 +13,23 @@ html {
 	font-family: sans-serif;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
-  background-color: rgb(175, 175, 174);
+  background-color: #fff;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1fb11f;
+  margin: 5px 0;
+}
+
+.icon-red {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  margin: 5px 0;
 }
 
 a, button {
